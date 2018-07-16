@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog </title>
+</head>
+<body>
+{% include 'sniffits/nav.html' %}
+<div class="container">
+
+    <h3 class="text-center">Welcome to My Blog</h3>
+    <br>
+    <h5>Latest Blogs</h5>
+    <hr>
+    {% for blog in blogs.all %}
+        <a href="{% url 'detail' blog.id %}"><h6>{{ blog.title }}</h6></a>
+        {{ blog.pub_date_only }}
+        <br>
+        {{ blog.description_less|linebreaks  }}
+        <br>
+       <img src="{{ blog.image.url }}" class="img-responsive" height="100px" width="auto"/>
+        <br>
+        <br>
+
+    {% endfor %}
+
+</div>
+
+{% include 'sniffits/footer.html' %}
+</body>
+</html>
